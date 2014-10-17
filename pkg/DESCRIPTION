@@ -1,0 +1,28 @@
+Package: tlocoh.dev
+Type: Package
+Title: Development package for tlocoh
+Version: 1.0
+Date: 2014-10-16
+Author: Andy Lyons
+Maintainer: Andy Lyons <tlocoh@gmail.com>
+Depends:
+    R (>= 3.0.0),
+    sp,
+    tlocoh
+Imports:
+    FNN,
+    pbapply,
+    rgeos
+Suggests:
+    maptools,
+    rgdal,
+    move,
+    png,
+    raster,
+    gpclib,
+    XML
+Description: Development package for tlocoh (i.e. functions still being
+    developed).
+License: GPL-2
+URL: http://tlocoh.r-forge.r-project.org
+Roxygen: list(wrap = TRUE)
