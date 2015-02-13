@@ -1,3 +1,4 @@
+#' @import tlocoh
 
 lxy.lhs.batch <- function(lxy, a=NULL, k=NULL, r=NULL, s, dir=".", suf=NULL, ud=T, iso.levels=c(0.1,0.25,0.5,0.75,0.95), save.hulls=TRUE, save.enc.pts=TRUE) {
 
@@ -6,12 +7,12 @@ lxy.lhs.batch <- function(lxy, a=NULL, k=NULL, r=NULL, s, dir=".", suf=NULL, ud=
     
     res <- NULL
 
-    s <- vectorize.parameter(s, n2z=TRUE)
+    s <- tlocoh:::vectorize.parameter(s, n2z=TRUE)
 
     for (sVal in s) {
-    for (kVal in vectorize.parameter(k, n2z=TRUE)) {
-    for (aVal in vectorize.parameter(a, n2z=TRUE)) {
-    for (rVal in vectorize.parameter(r, n2z=TRUE)) {
+    for (kVal in tlocoh:::vectorize.parameter(k, n2z=TRUE)) {
+    for (aVal in tlocoh:::vectorize.parameter(a, n2z=TRUE)) {
+    for (rVal in tlocoh:::vectorize.parameter(r, n2z=TRUE)) {
     
         if (identical(kVal,0)) kVal <- NULL
         if (identical(aVal,0)) aVal <- NULL

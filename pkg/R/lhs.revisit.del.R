@@ -7,6 +7,7 @@
 #'
 #' @seealso \code{\link{lhs.revisit.add}}
 #' @export
+#' @import tlocoh
 
 lhs.revisit.del <- function(lhs, status=TRUE) {
 

@@ -26,5 +26,7 @@
 #'
 #' @seealso \code{\link{xyt.lxy}}, \code{\link{lxy.proj.add}}, \code{\link{lxy.repair}}, \code{\link{lxy.subset}}, 
 #' \code{\link{lxy.merge}}, \code{\link{lxy.exp.csv}}, \code{\link{lxy.exp.kml}}, \code{\link{lxy.exp.shp}}, \code{\link{move.lxy}}
+#'
+#' @import tlocoh
 
 NULL

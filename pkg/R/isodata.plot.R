@@ -1,3 +1,4 @@
+#' @import tlocoh
 
 isodata.plot <- function(isoc.info, plotme=c("isoarea","isoear")[1], figs.per.page=1, legend=TRUE,
                              title=NULL, title.show=TRUE, subtitle=TRUE, 

@@ -23,6 +23,7 @@
 #' @seealso \code{\link{lhs.so.add}}, \code{\link{lhs.merge}}
 #'
 #' @export
+#' @import tlocoh
 
 
 lhs.to.add <- function(lhs, id="all", hs2.id="all", maxdt="auto", save.hto=TRUE, status=TRUE ) {

@@ -21,6 +21,7 @@
 #'
 #' @seealso \code{\link{lhs.plot.revisit}}, \code{\link{get.vals}}
 #' @export
+#' @import tlocoh
 
 
 lhs.revisit.add <- function(lhs, ta.min=NULL, ta.max=NULL, ta.cuts=NULL, status=TRUE) {

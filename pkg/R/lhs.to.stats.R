@@ -54,6 +54,8 @@
 #'
 #' @seealso \code{\link{lhs.to.add}}, \code{\link{lhs.iso.add}}
 #' @export
+#'
+#' @import tlocoh
 
 
 lhs.to.stats <- function(lhs, id1="all", id2="all", n="all", iso.lower=NULL, iso.upper=NULL, iso.oz=TRUE, iso.sort.metric="auto", 

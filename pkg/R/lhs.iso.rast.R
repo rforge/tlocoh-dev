@@ -29,8 +29,10 @@
 #' lhs <- lhs.iso.rast(lhs)
 #' }
 #'
-#' @export
 #' @seealso \code{\link{lhs.iso.add}}
+#'
+#' @export
+#' @import tlocoh
 
 
 lhs.iso.rast <- function(lhs, id=NULL, k=NULL, r=NULL, a=NULL, s=NULL, hs.names = NULL, 
@@ -47,7 +49,7 @@ lhs.iso.rast <- function(lhs, id=NULL, k=NULL, r=NULL, a=NULL, s=NULL, hs.names 
     if (is.null(id) && is.null(r) && is.null(k) && is.null(a) && is.null(s) && is.null(hs.names)) {
         hs.matching.idx <- 1:length(lhs)
     } else {    
-        hs.matching.idx <- lhs.select.which(lhs, id=id, r=r, k=k, a=a, s=s, hs.names=hs.names)
+        hs.matching.idx <- tlocoh:::lhs.select.which(lhs, id=id, r=r, k=k, a=a, s=s, hs.names=hs.names)
     }
     if (length(hs.matching.idx)==0) stop("No sets of hulls found matching those criteria")
     

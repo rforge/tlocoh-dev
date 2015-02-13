@@ -29,5 +29,7 @@
 #'
 #' @seealso \code{\link{lxy.lhs}}, \code{\link{summary.locoh.lhs}}, \code{\link{plot.locoh.lhs}}, \code{\link{lhs.merge}}, 
 #' \code{\link{lhs.iso.add}}, \code{\link{lhs.save}}, \code{\link{lhs.exp.shp}}
+#'
+#' @import tlocoh
 
 NULL

@@ -1,3 +1,4 @@
+#' @import tlocoh
 
 lhs.exp.isodata <- function(fn, plot.iso=FALSE) {
 
