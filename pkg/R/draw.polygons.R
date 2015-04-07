@@ -1,6 +1,6 @@
 #' Draw polygons on the plot window
 #'
-#' @description Draw polygons with the mouse and get a SpatialPolygonsDataFrame.
+#' @description Returns a SpatialPolygonsDataFrame object containing polygons drawn with the mouse on a plot
 #'
 #' @param n Number of polygons to draw.
 #' @param draw.reg Whether to draw the polygons on the plot. TRUE/FALSE.
@@ -8,15 +8,18 @@
 #' @param alpha Transparency of the colors (0..1). Ignored if \code{draw.reg=FALSE}.
 #' @param prompt.labels Whether to prompt for a label after each polygon is drawn (TRUE/FALSE). See Details.
 #' @param ID A character vector of length \code{n} of the ID values for each polygon
+#' @param proj4string An object of class \code{CRS} containing the coordinate system of the drawn polygons
 #'
 #' @details The number of polygons to be drawn must be specified by the argument \code{n}. If
 #' \code{prompt.labels=FALSE}, default IDs will be constructed for each polygon.
+#' 
+#' \code{proj4string} can be used if the current plot window is displaying geographic data.
 #'
 #' @return An object of class \code{SpatialPolygonsDataFrame}
 #'
 #' @export
 
-draw.polygons <- function(n, draw.reg=TRUE, col=NULL, alpha=0.5, prompt.labels=TRUE, ID=NULL) {
+draw.polygons <- function(n, draw.reg=TRUE, col=NULL, alpha=0.5, prompt.labels=TRUE, ID=NULL, proj4string = CRS(as.character(NA))) {
     ## Returns a list with n items where each item is a list containing two elements:
     ##     1) a data frame of points of a closed polygon drawn by the user on the current plot window
     ##     2) a color object (string)
@@ -77,7 +80,7 @@ draw.polygons <- function(n, draw.reg=TRUE, col=NULL, alpha=0.5, prompt.labels=T
     }
     
     # Create Spatial Polygons Data Frame
-    sites.sp <- SpatialPolygons(Polys.lst)
+    sites.sp <- SpatialPolygons(Polys.lst, proj4string=proj4string)
     sites.spdf <- SpatialPolygonsDataFrame(sites.sp, data=data.frame(name=poly.labels, id=ID, col=col))
     
     return(sites.spdf)

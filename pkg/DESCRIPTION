@@ -1,8 +1,8 @@
 Package: tlocoh.dev
 Type: Package
 Title: Development package for tlocoh
-Version: 1.1
-Date: 2015-02-13
+Version: 1.2.02
+Date: 2015-04-05
 Author: Andy Lyons
 Maintainer: Andy Lyons <tlocoh@gmail.com>
 Depends:
@@ -18,7 +18,10 @@ Suggests:
     png,
     raster,
     gpclib,
-    XML
+    XML,
+    shiny,
+    leaflet,
+    dismo
 Description: Development package for tlocoh (i.e. functions still being
     developed).
 License: GPL-2

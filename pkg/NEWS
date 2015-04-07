@@ -1,3 +1,12 @@
+Changes in version 1.2.02 (2015-04-05)
+=========================
+* Added <pre>lxy.explore</pre>, which launches an interactive leaflet app to explore a locoh-xy object (requires RStudio and the leaflet package)
+* Added <pre>lhs.shiny.select</pre> for an interactive shiny app to select hullsets (requires RStudio)
+* Added <pre>locoh.selection</pre> to create a new <pre>locoh.selection</pre> object which can be used to select hullsets in <pre>lhs.select</pre> and/or further edited in <pre>lhs.shiny.select</pre>
+* Added <pre>print.locoh.selection</pre>
+* Added <pre>lhs.gmap</pre>, which downloads background images from Google and can be fed to plot.locoh.lhs
+* Added <pre>selectInputFlex</pre>, an enhanced version of the selectInput function from the shiny package 
+
 Changes in version 1.1 (2015-02-13)
 =========================
 * Add <pre>draw.polygons</pre> function for on-screen digitzing of simple closed polygons
