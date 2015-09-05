@@ -1,3 +1,7 @@
+Changes in version 1.3.0 (2015-09-05)
+=========================
+* Added <pre>lhs.iso.overlap</pre> which computes the area of overlap of isopleths for all pairs of hullsets
+
 Changes in version 1.2.02 (2015-04-05)
 =========================
 * Added <pre>lxy.explore</pre>, which launches an interactive leaflet app to explore a locoh-xy object (requires RStudio and the leaflet package)
