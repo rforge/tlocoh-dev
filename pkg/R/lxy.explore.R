@@ -34,8 +34,7 @@ lxy.explore <- function(lxy, id=NULL, bg=c("esri_world_imagery","none")[1], conn
 
     if (!inherits(lxy, "locoh.lxy")) stop("lxy should be of class \"locoh.lxy\"")
     if (!requireNamespace("rgdal")) stop("package rgdal required")
-    ##if (!requireNamespace("htmltools")) stop("package htmltools required")
-    if (!require("leaflet")) stop("package leaflet required")
+    if (!requireNamespace("leaflet")) stop("package leaflet required")
     if (!bg %in% c("esri_world_imagery","none")) stop("unknown option for bg")
     if (is.na(proj4string(lxy$pts))) stop("lxy doesn't have a coordinate reference system. See lxy.proj.add()")
     if (connect.dots && is.null(lxy$pts$dt)) stop("Time stamps not found, so can not connect the dots")

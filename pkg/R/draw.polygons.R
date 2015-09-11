@@ -10,7 +10,8 @@
 #' @param ID A character vector of length \code{n} of the ID values for each polygon
 #' @param proj4string An object of class \code{CRS} containing the coordinate system of the drawn polygons
 #'
-#' @details The number of polygons to be drawn must be specified by the argument \code{n}. If
+#' @details This function involves 'digitizing' polygons by clicking with the mouse, so it requires a plot window 
+#' to be active. The number of polygons to be drawn must be specified by the argument \code{n}. If
 #' \code{prompt.labels=FALSE}, default IDs will be constructed for each polygon.
 #' 
 #' \code{proj4string} can be used if the current plot window is displaying geographic data.
@@ -20,13 +21,8 @@
 #' @export
 
 draw.polygons <- function(n, draw.reg=TRUE, col=NULL, alpha=0.5, prompt.labels=TRUE, ID=NULL, proj4string = CRS(as.character(NA))) {
-    ## Returns a list with n items where each item is a list containing two elements:
-    ##     1) a data frame of points of a closed polygon drawn by the user on the current plot window
-    ##     2) a color object (string)
-    ## The user will be given the chance to picks points for the polygon from the plot window using the mouse
-    ## This requires a plot window to be active
-    ## The purpose of this function is to help build a "regions" object which is one piece of a scatter plot 
     
+    ## The purpose of this function is to help build a "regions" object which is one piece of a scatter plot 
     
     if (is.null(n)) stop("n (number of polygons) is a required argument")
     if (dev.cur()==1) stop("To use this function, a plot window must be active")

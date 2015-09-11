@@ -3,6 +3,7 @@
 # An alternative form of the selectInput control for Shiny apps which allows you to specify the style for the select box
 
 selectInputFlex <- function (inputId, label, choices, selected = NULL, multiple = FALSE, selectize = TRUE, width = NULL, size = NULL, selectStyle=NULL) {
+    
     choices <- shiny:::choicesWithNames(choices)
     if (is.null(selected)) {
         if (!multiple) 

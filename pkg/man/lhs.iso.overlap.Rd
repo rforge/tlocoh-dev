@@ -25,12 +25,16 @@ lhs.iso.overlap(lhs, id = NULL, k = NULL, r = NULL, a = NULL,
 
 \item{iso.level}{A numeric vector of the isopleth level(s) of interest}
 
-\item{hsnames_simplify}{If True, will simplify the hullset names to just the IDs for the row and column names of the overlap matrix}
+\item{hsnames_simplify}{If True, will simplify the hullset names to just the IDs for the row and column names of the overlap matrices returned (see Value)}
+
+\item{status}{Show messages. T/F}
 }
 \value{
-A list object with three named elements. The \emph{spdf} contains a SpatialPolygonsDataFrame
-with the actual areas of intersection expressed in map units, and as the proportion of the isopleth area
-for each hullset.
+A list object with three named elements. The \emph{spdf} contains a SpatialPolygonsDataFrame,
+with a data table that saves the areas of intersection expressed in map units and proportions of the isopleth area
+for each hullset. \emph{overlap_area} contains a square matrix whose values are the area of intersection in map units.
+\emph{overlap_area} contains a square matrix whose values are the areas of intersection expressed as proportions
+of the each the two isopleths.
 }
 \description{
 Computes the area of isopleth overlap

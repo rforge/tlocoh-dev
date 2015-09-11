@@ -28,7 +28,6 @@
 
 lhs.shiny.select <- function(lhs, selection=NULL, gmap="none") {
 
-    if (!require(shiny)) stop("This function requires shiny")
     if (!inherits(lhs, "locoh.lhs")) stop("lhs should be of class \"locoh.lhs\"")
     if (!requireNamespace("dismo", quietly=TRUE)) stop("package dismo required to display a background image, please install")
     if (!requireNamespace("rgdal", quietly=TRUE)) stop("package rgdal required to display a background image, please install")

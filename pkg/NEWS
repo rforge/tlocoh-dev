@@ -1,4 +1,9 @@
-Changes in version 1.3.0 (2015-09-05)
+Changes in version 1.3.01 (2015-09-10)
+=========================
+* Modified <pre>lhs.iso.overlap</pre> - checks and removes slivers if intersection fails
+* shiny package moved from 'suggests' to 'depends'
+
+Changes in version 1.3.00 (2015-09-05)
 =========================
 * Added <pre>lhs.iso.overlap</pre> which computes the area of overlap of isopleths for all pairs of hullsets
 

@@ -29,7 +29,8 @@ An object of class \code{SpatialPolygonsDataFrame}
 Returns a SpatialPolygonsDataFrame object containing polygons drawn with the mouse on a plot
 }
 \details{
-The number of polygons to be drawn must be specified by the argument \code{n}. If
+This function involves 'digitizing' polygons by clicking with the mouse, so it requires a plot window
+to be active. The number of polygons to be drawn must be specified by the argument \code{n}. If
 \code{prompt.labels=FALSE}, default IDs will be constructed for each polygon.
 
 \code{proj4string} can be used if the current plot window is displaying geographic data.

@@ -10,7 +10,8 @@
 #' @param s The s value of hullsets to compare
 #' @param hs.names The name(s) of saved hullsets to compare
 #' @param iso.level A numeric vector of the isopleth level(s) of interest
-#' @param hsnames_simplify If True, will simplify the hullset names to just the IDs for the row and column names of the overlap matrix
+#' @param hsnames_simplify If True, will simplify the hullset names to just the IDs for the row and column names of the overlap matrices returned (see Value)
+#' @param status Show messages. T/F
 #'
 #' @details
 #' This function computes the area intersection of isopleths among different hullsets. 
@@ -18,9 +19,12 @@
 #' want to see which individuals share space. All pairs of hullsets in \code{lhs} will be compared,
 #' and all isopleth levels will be compared. 
 #' 
-#' @return A list object with three named elements. The \emph{spdf} contains a SpatialPolygonsDataFrame
-#' with the actual areas of intersection expressed in map units, and as the proportion of the isopleth area 
-#' for each hullset.
+#' @return 
+#' A list object with three named elements. The \emph{spdf} contains a SpatialPolygonsDataFrame,
+#' with a data table that saves the areas of intersection expressed in map units and proportions of the isopleth area 
+#' for each hullset. \emph{overlap_area} contains a square matrix whose values are the area of intersection in map units.
+#' \emph{overlap_area} contains a square matrix whose values are the areas of intersection expressed as proportions
+#' of the each the two isopleths.
 #'
 #' @seealso \code{\link{isopleths}}
 #'
@@ -51,7 +55,6 @@ lhs.iso.overlap <- function(lhs, id=NULL, k=NULL, r=NULL, a=NULL, s=NULL, hs.nam
     ## Create a collection of the name(s) of run(s) to include
     if (is.null(hs.names)) hs.names <- names(hs)
     
-
     hsnames_matrix <- hs.names
     if (hsnames_simplify) {
         ids_all <- sapply(hs, function(x) x$id) 
@@ -74,6 +77,7 @@ lhs.iso.overlap <- function(lhs, id=NULL, k=NULL, r=NULL, a=NULL, s=NULL, hs.nam
     iso_levels_with_overlap <- NULL
     compared_at_least_one_pair <- FALSE
     prj <- NULL
+    slivers_cleaned <- NULL
 
     if (status) pb <- txtProgressBar(min=0, max=nrow(hs1_hs2), style=3)
     ## Loop through the pairs of hullsets
@@ -82,7 +86,6 @@ lhs.iso.overlap <- function(lhs, id=NULL, k=NULL, r=NULL, a=NULL, s=NULL, hs.nam
         
         hs1.name <- hs1_hs2[i,1]
         hs2.name <- hs1_hs2[i,2]
-        
     
         ## Within a pairs of hullsets, loop through the isopleths objects in hs1 and h22
         for (hs1.iso.name in names(hs[[hs1.name]][["isos"]])) {
@@ -113,14 +116,45 @@ lhs.iso.overlap <- function(lhs, id=NULL, k=NULL, r=NULL, a=NULL, s=NULL, hs.nam
                     iso1 <- hs[[hs1.name]][["isos"]][[hs1.iso.name]][["polys"]][ hs[[hs1.name]][["isos"]][[hs1.iso.name]][["polys"]][["iso.level"]]==this_iso_level,]
                     iso2 <- hs[[hs2.name]][["isos"]][[hs2.iso.name]][["polys"]][ hs[[hs2.name]][["isos"]][[hs2.iso.name]][["polys"]][["iso.level"]]==this_iso_level,]
                     
-                    iso1_iso2 <- gIntersection(iso1, iso2, id=sprintf("%04d", overlap_id))    
+                    ## Take the intersection of these two isopleths
+                    iso1_iso2 <- try(rgeos::gIntersection(iso1, iso2, id=sprintf("%04d", overlap_id)), silent=TRUE)
+                    
+                    ## If one of the isopleth had a hole (or main piece) that had < 3 unit coordinates, it could trigger an error
+                    if (class(iso1_iso2) == "try-error") {
+                        #intersect_errors <- rbind(intersect_errors, data.frame(hs1=hs1.name, hs2=hs2.name, iso_level=this_iso_level))
+                        
+                        ## We will try to delete any invalid holes (or other polygons)
+                        ## We clean out the slivers from the hs object, so we don't have to do it more than once
+                        
+                        iso1_all_cleaned_lst <- tlocoh:::clean_slivers(hs[[hs1.name]][["isos"]][[hs1.iso.name]][["polys"]], status=FALSE)
+                        if (!is.null(iso1_all_cleaned_lst$results)) {
+                            hs[[hs1.name]][["isos"]][[hs1.iso.name]][["polys"]] <- iso1_all_cleaned_lst$sp
+                            slivers_cleaned <- rbind(slivers_cleaned, data.frame(hs=hs1.name, iso=hs1.iso.name))
+                        }
+                        
+                        iso2_all_cleaned_lst <- tlocoh:::clean_slivers(hs[[hs2.name]][["isos"]][[hs2.iso.name]][["polys"]], status=FALSE)
+                        if (!is.null(iso2_all_cleaned_lst$results)) {
+                            hs[[hs2.name]][["isos"]][[hs2.iso.name]][["polys"]] <- iso2_all_cleaned_lst$sp
+                            slivers_cleaned <- rbind(slivers_cleaned, data.frame(hs=hs2.name, iso=hs2.iso.name))
+                        }
+                        
+                        #hs[[hs1.name]][["isos"]][[hs1.iso.name]][["polys"]]  <- tlocoh:::clean_slivers(hs[[hs1.name]][["isos"]][[hs1.iso.name]][["polys"]], status=FALSE)
+                        #hs[[hs2.name]][["isos"]][[hs2.iso.name]][["polys"]]  <- tlocoh:::clean_slivers(hs[[hs2.name]][["isos"]][[hs2.iso.name]][["polys"]], status=FALSE)
+                        
+                        ## Redefine iso1 and iso2
+                        iso1 <- hs[[hs1.name]][["isos"]][[hs1.iso.name]][["polys"]][ hs[[hs1.name]][["isos"]][[hs1.iso.name]][["polys"]][["iso.level"]]==this_iso_level,]
+                        iso2 <- hs[[hs2.name]][["isos"]][[hs2.iso.name]][["polys"]][ hs[[hs2.name]][["isos"]][[hs2.iso.name]][["polys"]][["iso.level"]]==this_iso_level,]
+                        
+                        ## Recompute the intersection
+                        iso1_iso2 <- rgeos::gIntersection(iso1, iso2, id=sprintf("%04d", overlap_id))
+                    } 
                     
                     if (!is.null(iso1_iso2)) {
                     
-                        # Save the projection info
+                        # Store the projection info (first pass only)
                         if (is.null(prj)) prj <- iso1_iso2@proj4string
                         
-                        # Check for an error
+                        # Check for more than one polygon. This would only be a problem for how I grab the area
                         if (length(iso1_iso2@polygons) != 1) stop("Uh oh. length(iso1_iso2@polygons) != 1")
                         
                         iso1_area <- iso1@polygons[[1]]@area
@@ -134,8 +168,6 @@ lhs.iso.overlap <- function(lhs, id=NULL, k=NULL, r=NULL, a=NULL, s=NULL, hs.nam
                         overlap_id <- overlap_id + 1
                         iso_levels_with_overlap <- c(iso_levels_with_overlap, this_iso_level) 
                         
-                        ## Check for something more complex
-                        if (length(iso1_iso2@polygons)>1) stop("Hold your horses - iso1_iso2@polygons has more than one element!")
                         
                     }
                 
@@ -149,6 +181,12 @@ lhs.iso.overlap <- function(lhs, id=NULL, k=NULL, r=NULL, a=NULL, s=NULL, hs.nam
     }
     if (status) close(pb)
     
+    # Done with this
+    if (status && !is.null(slivers_cleaned)) {
+        cat("Isopleth slivers deleted from: \n")
+        print(slivers_cleaned)
+    }
+    
     if (!compared_at_least_one_pair) {
         if (status) cat("No pair of hullsets had matching isopleth levels \n")
         return(NULL)
@@ -157,10 +195,10 @@ lhs.iso.overlap <- function(lhs, id=NULL, k=NULL, r=NULL, a=NULL, s=NULL, hs.nam
     if (length(intersect_Polygons) != nrow(overlap_df)) stop("Uh oh. The length of the SpatialPolygons object and the length of the data frame do not match.")
     
     ## Create a SpatialPolygons object
-    Sr <- SpatialPolygons(intersect_Polygons, proj4string=prj)
+    Sr <- sp::SpatialPolygons(intersect_Polygons, proj4string=prj)
     
     ## Create a SpatialPolygonsDataFrame object
-    overlaps_spdf <- SpatialPolygonsDataFrame(Sr, data=overlap_df, match.ID=FALSE)
+    overlaps_spdf <- sp::SpatialPolygonsDataFrame(Sr, data=overlap_df, match.ID=FALSE)
     
     ## Create some blank lists that will be used to store Polygons objects
     proportion_overlap <- list()
@@ -176,11 +214,10 @@ lhs.iso.overlap <- function(lhs, id=NULL, k=NULL, r=NULL, a=NULL, s=NULL, hs.nam
         for (j in which(overlap_df[["iso_level"]] == isolev)) {
             hs1.idx <- which(hs.names == overlap_df[j, "hs1name"])
             hs2.idx <- which(hs.names == overlap_df[j, "hs2name"])
-            prp_overlap[hs1.idx, hs2.idx] <-  overlap_df[j, "area_prhs1"]
-            prp_overlap[hs2.idx, hs1.idx] <-  overlap_df[j, "area_prhs2"]
-            ar_overlap[hs1.idx, hs2.idx] <-  overlap_df[j, "area"]
-            ar_overlap[hs2.idx, hs1.idx] <-  overlap_df[j, "area"]
-            
+            prp_overlap[hs1.idx, hs2.idx] <- overlap_df[j, "area_prhs1"]
+            prp_overlap[hs2.idx, hs1.idx] <- overlap_df[j, "area_prhs2"]
+            ar_overlap[hs1.idx, hs2.idx] <- overlap_df[j, "area"]
+            ar_overlap[hs2.idx, hs1.idx] <- overlap_df[j, "area"]            
         }
         
         ## Add to the list
