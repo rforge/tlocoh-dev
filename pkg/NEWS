@@ -1,13 +1,23 @@
-Changes in version 1.3.01 (2015-09-10)
+Changes in version 1.31.00 (2015-09-20)
+=========================
+* Added <pre>lxy.tumap</pre> which generates a gridded time-use map
+* Added <pre>plot.locoh.tumap</pre>, <pre>hexlayer</pre>, and <pre>gridlayer</pre> to support <pre>lxy.tumap</pre>
+* Corrected bugs in <pre>lhs.iso.overlap</pre> that created errors when isopleths intersected at a point or line
+
+Changes in version 1.30.02 (2015-09-17)
+=========================
+* Corrected a bug <pre>lhs.iso.overlap</pre> that generated an error when checking for valid typology
+
+Changes in version 1.30.01 (2015-09-10)
 =========================
 * Modified <pre>lhs.iso.overlap</pre> - checks and removes slivers if intersection fails
 * shiny package moved from 'suggests' to 'depends'
 
-Changes in version 1.3.00 (2015-09-05)
+Changes in version 1.30.00 (2015-09-05)
 =========================
 * Added <pre>lhs.iso.overlap</pre> which computes the area of overlap of isopleths for all pairs of hullsets
 
-Changes in version 1.2.02 (2015-04-05)
+Changes in version 1.20.02 (2015-04-05)
 =========================
 * Added <pre>lxy.explore</pre>, which launches an interactive leaflet app to explore a locoh-xy object (requires RStudio and the leaflet package)
 * Added <pre>lhs.shiny.select</pre> for an interactive shiny app to select hullsets (requires RStudio)

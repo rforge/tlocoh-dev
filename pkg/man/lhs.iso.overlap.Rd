@@ -25,7 +25,7 @@ lhs.iso.overlap(lhs, id = NULL, k = NULL, r = NULL, a = NULL,
 
 \item{iso.level}{A numeric vector of the isopleth level(s) of interest}
 
-\item{hsnames_simplify}{If True, will simplify the hullset names to just the IDs for the row and column names of the overlap matrices returned (see Value)}
+\item{hsnames_simplify}{If True, will simplify the hullset names to just the IDs for the row and column names of the overlap matrices (see Return)}
 
 \item{status}{Show messages. T/F}
 }
