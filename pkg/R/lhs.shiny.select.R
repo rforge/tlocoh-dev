@@ -1,6 +1,6 @@
 #' Interactive selection of hullsets from a locoh-hullset
 #'
-#' Visually select one hullset per individual from a \link{LoCoH-hullset} 
+#' Visually select one hullset per individual from a \link[tlocoh]{LoCoH-hullset} 
 #'
 #' @param lhs A LoCoH-hullset object
 #' @param selection An object of class \emph{locoh.selection} containing a named list (one per individual) of selected hullset parameter values

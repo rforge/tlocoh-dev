@@ -8,7 +8,7 @@ lhs.to.add(lhs, id = "all", hs2.id = "all", maxdt = "auto",
   save.hto = TRUE, status = TRUE)
 }
 \arguments{
-\item{lhs}{A \link{LoCoH-hullset} object}
+\item{lhs}{A \link[tlocoh]{LoCoH-hullset} object}
 
 \item{id}{A character vector of the hullset ids to compute metrics for. Can also be \code{'all'}.}
 
@@ -37,6 +37,6 @@ This metric is used for association analysis. You can use this metric for exampl
 Other association metrics exist for spatially overlapping hulls (see \code{\link{lhs.so.add}}).
 }
 \seealso{
-\code{\link{lhs.so.add}}, \code{\link{lhs.merge}}
+\code{\link{lhs.so.add}}, \code{\link[tlocoh]{lhs.merge}}
 }
 

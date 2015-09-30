@@ -10,7 +10,7 @@ lhs.iso.rast(lhs, id = NULL, k = NULL, r = NULL, a = NULL, s = NULL,
   ll.round = TRUE, status = TRUE)
 }
 \arguments{
-\item{lhs}{A \link{LoCoH-hullset} object}
+\item{lhs}{A \link[tlocoh]{LoCoH-hullset} object}
 
 \item{id}{The id(s) of the hullsets to create isopleths for}
 
@@ -56,6 +56,6 @@ lhs <- lhs.iso.rast(lhs)
 }
 }
 \seealso{
-\code{\link{lhs.iso.add}}
+\code{\link[tlocoh]{lhs.iso.add}}
 }
 

@@ -1,6 +1,6 @@
 #' Download background images for plots
 #'
-#' @param lhs A \link{LoCoH-hullset} object
+#' @param lhs A \link[tlocoh]{LoCoH-hullset} object
 #' @param id The name(s) of individuals to extract
 #' @param k The k value of hullsets to extract
 #' @param r The r value of hullsets to extract

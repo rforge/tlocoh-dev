@@ -9,7 +9,7 @@ lhs.gmap(lhs, id = NULL, k = NULL, r = NULL, a = NULL, s = NULL,
   status = TRUE)
 }
 \arguments{
-\item{lhs}{A \link{LoCoH-hullset} object}
+\item{lhs}{A \link[tlocoh]{LoCoH-hullset} object}
 
 \item{id}{The name(s) of individuals to extract}
 

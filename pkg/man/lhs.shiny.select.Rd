@@ -30,7 +30,7 @@ This requires an internet connection. You may also set gmap to an object of type
 downloaded each time. See \code{lhs.gmap} (in the tlocoh.dev package).
 }
 \description{
-Visually select one hullset per individual from a \link{LoCoH-hullset}
+Visually select one hullset per individual from a \link[tlocoh]{LoCoH-hullset}
 }
 \seealso{
 code{\link{lhs.selection}}, code{\link{lhs.gmap}}

@@ -1,6 +1,6 @@
 #' Add hull metrics for association analysis
 #'
-#' @param lhs A \link{LoCoH-hullset} object
+#' @param lhs A \link[tlocoh]{LoCoH-hullset} object
 #' @param save.hso Whether to save the hull intersection list, T/F
 #' @param skip.dups Skip duplicate hulls (faster)
 #'
@@ -12,7 +12,7 @@
 #' @param status Show status messages. T/F
 #' @param piFUN The function to use to identify which pairs of hulls intersect: 'pIntersect' or 'pIntersectSat'
 #'
-#' @return A \link{LoCoH-hullset} object
+#' @return A \link[tlocoh]{LoCoH-hullset} object
 #'
 #' @details 
 #' This function computes hull metrics for the spatially overlapping hulls from two ids. Typically this would be used

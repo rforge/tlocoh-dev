@@ -2,7 +2,7 @@
 #'
 #' Compute hull metrics for pairs of temporally overlapping hulls of separate individuals 
 #'
-#' @param lhs A \link{LoCoH-hullset} object
+#' @param lhs A \link[tlocoh]{LoCoH-hullset} object
 #' @param id A character vector of the hullset ids to compute metrics for. Can also be \code{'all'}.
 #' @param hs2.id A character vector of the hullset ids to use as the comparison hullsets. Can also be \code{'all'}.
 #' @param maxdt The maximum difference in time (in seconds) for two hulls to be considered 'overlapping' in time. Can also be \code{'auto'},
@@ -20,7 +20,7 @@
 #'
 #' @return A LoCoH-hullset object
 #'
-#' @seealso \code{\link{lhs.so.add}}, \code{\link{lhs.merge}}
+#' @seealso \code{\link{lhs.so.add}}, \code{\link[tlocoh]{lhs.merge}}
 #'
 #' @export
 #' @import tlocoh

@@ -38,7 +38,7 @@ isopleths (i.e., area for the k-method, and number of enclosed points for the a 
 
 \item{to.comp.hist}{Draw a histogram of the centroid distances of temporally overlapping hulls}
 
-\item{breaks}{The number of breaks in the histgram (or another valid value for breaks, see \code{\link{hist}}).}
+\item{breaks}{The number of breaks in the histgram (or another valid value for breaks, see \code{\link[graphics]{hist}}).}
 
 \item{to.mcd.outline.only}{Show the outline only of the histogram of the mean centroid distance for temporally overlapping hulls. T/F.}
 
@@ -105,6 +105,6 @@ Note that before you can use this function, the mean-centroid-distance for time-
 You can apply an isopleth filter by passing values for iso.lower and iso.upper. These should be the isopleth level (normally between 0 and 1) that the hull parent point must fall in to be included in the analysis. If, for example, you wanted to see whether association in the core area is significantly different from nuetral interaction, you would pass \code{iso.upper=0.5} and leave \code{iso.lower} NULL. Note that the isopleths with matching isopleth levels must already be present.
 }
 \seealso{
-\code{\link{lhs.to.add}}, \code{\link{lhs.iso.add}}
+\code{\link{lhs.to.add}}, \code{\link[tlocoh]{lhs.iso.add}}
 }
 

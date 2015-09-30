@@ -2,7 +2,7 @@
 #'
 #' Explore a LoCoH-xy object in a zoomable clickable interactive map
 #'
-#' @param lxy A \link{LoCoH-xy} object
+#' @param lxy A \link[tlocoh]{LoCoH-xy} object
 #' @param id The name(s) of individuals to export
 #' @param bg The background layer (i.e., tile) to display, or \code{'none'}
 #' @param connect.dots Whether to draw a line between segments, T/F
@@ -15,7 +15,7 @@
 #' To use this function, you must be using RStudio with the leaflet package installed. To display a satellite image in
 #' the background, you must also be connected to the internet.
 #'
-#' @seealso \code{\link{lxy.exp.kml}}
+#' @seealso \code{\link[tlocoh]{lxy.exp.kml}}
 #'
 #' @examples
 #' \dontrun{
@@ -34,7 +34,7 @@ lxy.explore <- function(lxy, id=NULL, bg=c("esri_world_imagery","none")[1], conn
 
     if (!inherits(lxy, "locoh.lxy")) stop("lxy should be of class \"locoh.lxy\"")
     if (!requireNamespace("rgdal")) stop("package rgdal required")
-    if (!requireNamespace("leaflet")) stop("package leaflet required")
+    if (!require("leaflet")) stop("package leaflet required")
     if (!bg %in% c("esri_world_imagery","none")) stop("unknown option for bg")
     if (is.na(proj4string(lxy$pts))) stop("lxy doesn't have a coordinate reference system. See lxy.proj.add()")
     if (connect.dots && is.null(lxy$pts$dt)) stop("Time stamps not found, so can not connect the dots")

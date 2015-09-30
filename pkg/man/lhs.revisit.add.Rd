@@ -34,6 +34,6 @@ seconds, 4000 to 7000 seconds, and 7000 to 10000 seconds. One way to get the val
 of revisit times using \code{\link{lhs.plot.revisit}}, and then use the \code{\link{get.vals}} function to select time values between clusters of revisit times.
 }
 \seealso{
-\code{\link{lhs.plot.revisit}}, \code{\link{get.vals}}
+\code{\link[tlocoh]{lhs.plot.revisit}}, \code{\link[tlocoh]{get.vals}}
 }
 

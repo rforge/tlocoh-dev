@@ -1,17 +1,18 @@
 Package: tlocoh.dev
 Type: Package
 Title: Development package for tlocoh
-Version: 1.31.0
-Date: 2015-09-20
+Version: 1.32.00
+Date: 2015-09-29
 Author: Andy Lyons
 Maintainer: Andy Lyons <tlocoh@gmail.com>
 Depends:
     R (>= 3.0.0),
     sp,
     tlocoh,
-    shiny
-Imports:
+    shiny,
     pbapply
+Imports:
+    
 Suggests:
     maptools,
     rgdal,

@@ -9,7 +9,7 @@ lhs.so.add(lhs, id = "all", hs2.id = "all", tbuff = 0, ivg = NULL,
   piFUN = c("pIntersect", "pIntersectSat")[1])
 }
 \arguments{
-\item{lhs}{A \link{LoCoH-hullset} object}
+\item{lhs}{A \link[tlocoh]{LoCoH-hullset} object}
 
 \item{id}{A character vector of the hullset ids to compute metrics for. Can also be \code{'all'}.}
 
@@ -30,7 +30,7 @@ lhs.so.add(lhs, id = "all", hs2.id = "all", tbuff = 0, ivg = NULL,
 \item{piFUN}{The function to use to identify which pairs of hulls intersect: 'pIntersect' or 'pIntersectSat'}
 }
 \value{
-A \link{LoCoH-hullset} object
+A \link[tlocoh]{LoCoH-hullset} object
 }
 \description{
 Add hull metrics for association analysis

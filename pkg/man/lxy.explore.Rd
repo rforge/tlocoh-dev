@@ -8,7 +8,7 @@ lxy.explore(lxy, id = NULL, bg = c("esri_world_imagery", "none")[1],
   connect.dots = FALSE, line.popup = FALSE, status = TRUE)
 }
 \arguments{
-\item{lxy}{A \link{LoCoH-xy} object}
+\item{lxy}{A \link[tlocoh]{LoCoH-xy} object}
 
 \item{id}{The name(s) of individuals to export}
 
@@ -41,6 +41,6 @@ lxy.explore(toni.lxy, connect.dots=TRUE, line.popup=TRUE)
 }
 }
 \seealso{
-\code{\link{lxy.exp.kml}}
+\code{\link[tlocoh]{lxy.exp.kml}}
 }
 

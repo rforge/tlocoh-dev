@@ -2,7 +2,7 @@
 #'
 #' Adds rasterized version of isopleth(s) to a LoCoH-hullset object 
 #'
-#' @param lhs A \link{LoCoH-hullset} object
+#' @param lhs A \link[tlocoh]{LoCoH-hullset} object
 #' @param id The id(s) of the hullsets to create isopleths for 
 #' @param k The k value of hullsets to create isopleths for
 #' @param r The r value of hullsets to create isopleths for
@@ -29,7 +29,7 @@
 #' lhs <- lhs.iso.rast(lhs)
 #' }
 #'
-#' @seealso \code{\link{lhs.iso.add}}
+#' @seealso \code{\link[tlocoh]{lhs.iso.add}}
 #'
 #' @export
 #' @import tlocoh

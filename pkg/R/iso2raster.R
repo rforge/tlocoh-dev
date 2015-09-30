@@ -28,7 +28,7 @@ iso2raster <- function(polys, raster=NULL, ext=NULL, dimSize=100, cell.size=NULL
     if (is.null(raster)) {    
     
       if (is.null(ext)) {
-          ext <- extent(polys)
+          ext <- raster::extent(polys)
       } else {
           if (!is(ext, "Extent")) stop('ext must be of class extent')
           if (ll.round) {

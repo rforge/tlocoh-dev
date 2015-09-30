@@ -46,6 +46,6 @@ want to see which individuals share space. All pairs of hullsets in \code{lhs} w
 and all isopleth levels will be compared.
 }
 \seealso{
-\code{\link{isopleths}}
+\code{\link[tlocoh]{isopleths}}
 }
 

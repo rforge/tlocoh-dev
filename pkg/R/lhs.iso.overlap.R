@@ -26,7 +26,7 @@
 #' \emph{overlap_area} contains a square matrix whose values are the areas of intersection expressed as proportions
 #' of the each the two isopleths.
 #'
-#' @seealso \code{\link{isopleths}}
+#' @seealso \code{\link[tlocoh]{isopleths}}
 #'
 #' @export
 

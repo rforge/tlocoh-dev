@@ -19,7 +19,7 @@
 #'
 #' @return A LoCoH-hullset object
 #'
-#' @seealso \code{\link{lhs.plot.revisit}}, \code{\link{get.vals}}
+#' @seealso \code{\link[tlocoh]{lhs.plot.revisit}}, \code{\link[tlocoh]{get.vals}}
 #' @export
 #' @import tlocoh
 

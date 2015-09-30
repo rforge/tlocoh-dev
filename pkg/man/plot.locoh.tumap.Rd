@@ -5,7 +5,7 @@
 \title{Plot time use maps}
 \usage{
 plot.locoh.tumap(tumap, breaks = 10, nsv = TRUE, mnlv = TRUE,
-  ivg = NULL)
+  ivg = NULL, ...)
 }
 \description{
 Plot time use maps
