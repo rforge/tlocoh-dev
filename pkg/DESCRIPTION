@@ -11,8 +11,6 @@ Depends:
     tlocoh,
     shiny,
     pbapply
-Imports:
-    
 Suggests:
     maptools,
     rgdal,
