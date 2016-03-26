@@ -1,8 +1,8 @@
 Package: tlocoh.dev
 Type: Package
 Title: Development package for tlocoh
-Version: 1.32.00
-Date: 2015-09-29
+Version: 1.33.00
+Date: 2016-03-26
 Author: Andy Lyons
 Maintainer: Andy Lyons <tlocoh@gmail.com>
 Depends:
@@ -25,3 +25,4 @@ Description: Development package for tlocoh (i.e. functions still being
     developed).
 License: GPL-2
 URL: http://tlocoh.r-forge.r-project.org
+RoxygenNote: 5.0.1
