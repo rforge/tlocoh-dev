@@ -35,4 +35,3 @@ to be active. The number of polygons to be drawn must be specified by the argume
 
 \code{proj4string} can be used if the current plot window is displaying geographic data.
 }
-

@@ -27,4 +27,3 @@ per individual for the rest of the analysis.
 \seealso{
 code{\link{lhs.shiny.select}}
 }
-

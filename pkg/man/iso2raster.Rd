@@ -34,4 +34,3 @@ Converts isopleths in a SpatialPolygonsDataFrame object to a RasterLayer
 This presumes the SPDF contains isopleths ordered from lowest level to highest. The cell values of the resulting raster will
 sum up to the largest isopleth leve. In order for the resulting raster to sum to 1, the 100% isopleth must be part of the input.
 }
-

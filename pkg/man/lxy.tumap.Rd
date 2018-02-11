@@ -4,15 +4,26 @@
 \alias{lxy.tumap}
 \title{Computes the time use statistics for a LoCoH-xy object using a gridded surface}
 \usage{
-lxy.tumap(lxy, id = NULL, ivg = NULL, gridtype = c("hex", "square")[1],
-  cellsize = NULL, mindim = 20, status = TRUE)
+lxy.tumap(lxy, id = NULL, ivg = NULL, grid = c("hex", "square")[1],
+  cellsize = NULL, mindim = 20, gridtype = NULL, status = TRUE)
 }
 \arguments{
 \item{lxy}{A LoCoH-xy object}
 
 \item{id}{The name(s) of individuals to analyze}
+
+\item{ivg}{Inter-visit gap}
+
+\item{grid}{Grid type ('hex' or 'square')}
+
+\item{cellsize}{Cell size in map units}
+
+\item{mindim}{The minimum number of rows or columns}
+
+\item{gridtype}{No longer used  Deprecated}
+
+\item{stats}{Whether to display messages}
 }
 \description{
 Computes the time use statistics for a LoCoH-xy object using a gridded surface
 }
-

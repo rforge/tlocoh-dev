@@ -20,4 +20,3 @@ Delete all revisitation hull metrics in a LoCoH-hullset object
 \seealso{
 \code{\link{lhs.revisit.add}}
 }
-

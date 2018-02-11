@@ -7,6 +7,8 @@
 #' @param bg The background layer (i.e., tile) to display, or \code{'none'}
 #' @param connect.dots Whether to draw a line between segments, T/F
 #' @param line.popup Enable popup balloons on the line segments, T/F
+#' @param width Width of the leaflet map including 'px' for units
+#' @param height Height of the leaflet map including 'px' for units
 #' @param status Display status messages, T/F
 #'
 #' @details This function displays a Locoh-xy object in an interactive window with a satellite image in the background.
@@ -30,7 +32,7 @@
 #' @export
 
 
-lxy.explore <- function(lxy, id=NULL, bg=c("esri_world_imagery","none")[1], connect.dots=FALSE, line.popup=FALSE, status=TRUE) {
+lxy.explore <- function(lxy, id=NULL, bg=c("esri_world_imagery","none")[1], connect.dots=FALSE, line.popup=FALSE, width="300px", height=width, status=TRUE) {
 
     if (!inherits(lxy, "locoh.lxy")) stop("lxy should be of class \"locoh.lxy\"")
     if (!requireNamespace("rgdal")) stop("package rgdal required")
@@ -40,7 +42,7 @@ lxy.explore <- function(lxy, id=NULL, bg=c("esri_world_imagery","none")[1], conn
     if (connect.dots && is.null(lxy$pts$dt)) stop("Time stamps not found, so can not connect the dots")
 
     ## Initialize a new leaflet object
-    m <- leaflet::leaflet()
+    m <- leaflet::leaflet(width=width, height=height)
 
     ## Add tiles if needed
     if (bg != "none") {
@@ -211,6 +213,10 @@ lxy.explore <- function(lxy, id=NULL, bg=c("esri_world_imagery","none")[1], conn
     }
 
     ## Display the map
-    print(m)
+    ## print(m)
+    
+    ## Return the leaflet object
+    return(m)
+
 
 }

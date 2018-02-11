@@ -5,7 +5,8 @@
 \title{Explore a LoCoH-xy object in a interactive map}
 \usage{
 lxy.explore(lxy, id = NULL, bg = c("esri_world_imagery", "none")[1],
-  connect.dots = FALSE, line.popup = FALSE, status = TRUE)
+  connect.dots = FALSE, line.popup = FALSE, width = "300px",
+  height = width, status = TRUE)
 }
 \arguments{
 \item{lxy}{A \link[tlocoh]{LoCoH-xy} object}
@@ -17,6 +18,10 @@ lxy.explore(lxy, id = NULL, bg = c("esri_world_imagery", "none")[1],
 \item{connect.dots}{Whether to draw a line between segments, T/F}
 
 \item{line.popup}{Enable popup balloons on the line segments, T/F}
+
+\item{width}{Width of the leaflet map including 'px' for units}
+
+\item{height}{Height of the leaflet map including 'px' for units}
 
 \item{status}{Display status messages, T/F}
 }
@@ -44,4 +49,3 @@ lxy.explore(toni.lxy, connect.dots=TRUE, line.popup=TRUE)
 \seealso{
 \code{\link[tlocoh]{lxy.exp.kml}}
 }
-

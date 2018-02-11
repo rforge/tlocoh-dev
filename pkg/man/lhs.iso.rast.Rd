@@ -59,4 +59,3 @@ lhs <- lhs.iso.rast(lhs)
 \seealso{
 \code{\link[tlocoh]{lhs.iso.add}}
 }
-

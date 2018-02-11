@@ -35,4 +35,3 @@ Visually select one hullset per individual from a \link[tlocoh]{LoCoH-hullset}
 \seealso{
 code{\link{lhs.selection}}, code{\link{lhs.gmap}}
 }
-

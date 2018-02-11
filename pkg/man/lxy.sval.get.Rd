@@ -35,4 +35,3 @@ only the first set of 's' values will be returned.
 \seealso{
 \code{\link[tlocoh]{lxy.ptsh.add}}; Vignette on locoh.lxy data class
 }
-

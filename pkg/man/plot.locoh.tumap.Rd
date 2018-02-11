@@ -32,4 +32,3 @@ If \code{cex} is passed, it will change the text size for the plot and legend
 \seealso{
 \code{\link{lxy.tumap}}
 }
-

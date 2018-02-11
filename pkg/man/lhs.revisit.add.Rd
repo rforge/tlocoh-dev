@@ -36,4 +36,3 @@ of revisit times using \code{\link{lhs.plot.revisit}}, and then use the \code{\l
 \seealso{
 \code{\link[tlocoh]{lhs.plot.revisit}}, \code{\link[tlocoh]{get.vals}}
 }
-

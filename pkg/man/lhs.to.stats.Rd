@@ -107,4 +107,3 @@ You can apply an isopleth filter by passing values for iso.lower and iso.upper. 
 \seealso{
 \code{\link{lhs.to.add}}, \code{\link[tlocoh]{lhs.iso.add}}
 }
-

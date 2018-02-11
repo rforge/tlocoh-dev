@@ -39,4 +39,3 @@ Other association metrics exist for spatially overlapping hulls (see \code{\link
 \seealso{
 \code{\link{lhs.so.add}}, \code{\link[tlocoh]{lhs.merge}}
 }
-

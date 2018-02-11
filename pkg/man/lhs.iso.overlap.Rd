@@ -48,4 +48,3 @@ and all isopleth levels will be compared.
 \seealso{
 \code{\link[tlocoh]{isopleths}}
 }
-

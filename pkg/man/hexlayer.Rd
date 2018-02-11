@@ -12,4 +12,3 @@ hexlayer(bbox, proj4string = CRS(as.character(NA)), mindim = 50,
 Returns a hexagonal grid covering a bounding box
 If both mindim and cellsize are passed, cellsize trumps mindim
 }
-

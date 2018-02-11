@@ -57,4 +57,3 @@ is only computed if a value for \code{ivg} is passed.
 \code{pIntersect} and \code{pIntersectSat} are two functions that identify which pairs of hulls actually intersect. Neither are 
 terribly fast, but \code{pIntersect} appears to work faster than \code{pIntersectSat}.
 }
-

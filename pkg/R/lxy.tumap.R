@@ -2,13 +2,29 @@
 #'
 #' @param lxy A LoCoH-xy object
 #' @param id The name(s) of individuals to analyze
+#' @param ivg Inter-visit gap
+#' @param grid Grid type ('hex' or 'square')
+#' @param cellsize Cell size in map units
+#' @param mindim The minimum number of rows or columns
+#' @param gridtype No longer used  Deprecated
+#' @param stats Whether to display messages
 #' @export
 
-lxy.tumap <- function(lxy, id=NULL, ivg=NULL, gridtype=c("hex", "square")[1], cellsize=NULL, mindim=20, status=TRUE) {
+lxy.tumap <- function(lxy, id=NULL, ivg=NULL, grid=c("hex", "square")[1], cellsize=NULL, mindim=20, gridtype=NULL, status=TRUE) {
+
+    if (!missing(gridtype)) {
+      warning("argument 'gridtype' is deprecated; please use 'grid' instead.", call. = FALSE)
+      grid <- gridtype
+    }
     
     if (!require(pbapply)) error("package pbapply required")
     if (!inherits(lxy, "locoh.lxy")) stop("lxy should be of class \"locoh.lxy\"")
-    if (!gridtype %in% c("hex", "square")) stop("unknown value for gridtype")
+    if (is.character(grid)) {
+        if (!grid %in% c("hex", "square")) stop("unknown value for grid")
+    } else if (!inherits(grid, "SpatialPolygons")) {
+        stop("unknown value for grid")
+    }
+    
     if (is.null(ivg)) stop("Need a value for the inter-visit gap (ivg)")
     if (is.null(lxy[["pts"]][["dt"]])) stop("timestamps needed for this function")
     
@@ -32,10 +48,12 @@ lxy.tumap <- function(lxy, id=NULL, ivg=NULL, gridtype=c("hex", "square")[1], ce
         yrange <- range(xys.idVal[,2])
         bbox <- rbind(xrange, yrange)
 
-        if (gridtype=="hex") {
+        if (identical(grid,"hex")) {
             thisgrid <- hexlayer(bbox, proj4string=prj, mindim=mindim, cellsize=cellsize, plotme=FALSE)
-        } else {
+        } else if (identical(grid,"square")) {
             thisgrid <- gridlayer(bbox, proj4string=prj, mindim=mindim, cellsize=cellsize, plotme=FALSE)
+        } else {
+            thisgrid <- grid
         }
         
         tusdata <- NULL
@@ -75,7 +93,6 @@ lxy.tumap <- function(lxy, id=NULL, ivg=NULL, gridtype=c("hex", "square")[1], ce
         }
         
         ## Attach the dataframe to the SpatialPolygons object
-        #print("Ready?"); browser()
         thisgrid <- SpatialPolygonsDataFrame(thisgrid, data=tusdata, match.ID = TRUE)
         
         ## Save this SpatialPolygonsDataFrame to the result list

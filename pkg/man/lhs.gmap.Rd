@@ -47,4 +47,3 @@ toni.bg <- lhs.gmap(toni.lhs, type="terrain")
 plot(toni.lhs, iso=T, gmap=toni.bg)
 }
 }
-
